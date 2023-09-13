@@ -1,0 +1,121 @@
+/* Base Styles */
+body {
+    background-color: #f2f2f2; 
+}
+
+a {
+    color: #3290A6;
+    font-family: 'Archivo', sans-serif;
+}
+
+a:hover {
+    color: #99B8BF;
+}
+
+span, p {
+    font-family: 'Archivo', sans-serif;
+}
+
+#everything {
+    text-align: center;
+}
+
+/* Heading Styles */
+h1, h2 {
+    color: #313740;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Button Styles */
+.btn {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn:hover, 
+#start-btn:hover {
+    box-shadow: 0 0px 5px 5px white inset;
+}
+
+.btn:focus, 
+.btn:active, 
+.btn:visited {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: #343a40;
+}
+
+/* Specific ID Styles */
+#final-score {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+#question-title {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#answer-check {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: bold;
+    color: purple;
+}
+
+#timer, 
+#times-up, 
+#view-highscores {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 5px;
+}
+
+#times-up {
+    text-align: end;
+}
+
+#timer {
+    text-align: end;
+    padding-right: 15px;
+}
+
+#view-highscores {
+    padding-left: 15px;
+    position: relative;
+    top: 20px;
+}
+
+#start-btn {
+    background-color: purple;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Class Styles */
+.quiz-title {
+    color: purple;
+    font-size: 50px;
+}
+
+.quiz-info {
+    color: white;
+    background-color: #313740;
+    font-weight: bolder;
+    font-size: 45px;
+    box-sizing: border-box;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

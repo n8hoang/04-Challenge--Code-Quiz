@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Coding Quiz</title>
+    <link rel="stylesheet" href="Assets/css/style.css">
+</head>
+<body>
+    <!-- MAIN -->
+    <div>
+        <!-- HIGHSCORE AND TIMER -->
+        <div class="row">
+            <div>
+                <a href="#" id="view-highscores">View High Scores</a>
+            </div>
+            <div id="timer">Time: <span id="time-left">0</span></div>
+            <div id="times-up">Time's Up!</div>
+        </div>
+
+        <div id="everything">
+            <main>
+                <!-- QUIZ INTRO AND START BTN -->
+                <div id="start">
+                    <h1 class="quiz-title">Javascript Coding Quiz</h1>
+                    <p class="quiz-info">
+                        Test your knowledge of JavaScript. You will have 60 seconds to answer 10 questions about the Javascript coding language. Answering wrong will subtract time from the clock so answer wisely.
+                    </p>
+                    <button type="button" id="start-btn">Start Quiz</button>
+                </div>
+
+                <!-- QUESTIONS -->
+                <div id="question-div" style="display: none;">
+                    <p id="question-title"></p>
+                    <div>
+                        <p><button id="choice-a" class="btn"></button></p>
+                        <p><button id="choice-b" class="btn"></button></p>
+                        <p><button id="choice-c" class="btn"></button></p>
+                        <p><button id="choice-d" class="btn"></button></p>
+                    </div>
+                    <hr id="lineBreak" style="display: none">
+                    <p id="answer-check" style="display: none;"></p>
+                </div>
+
+                <!-- FINAL SCORE SUMMARY -->
+                <div id="score-summary" style="display: none;">
+                    <h2>Your final score is <span id="final-score"></span> !</h2>
+                    <form>
+                        <p>Enter your initials: <input id="initial-input" type="text">
+                        <button type="submit" class ="btn" id="submit-initial">Submit</button>
+                        </p>
+                    </form>
+                </div>
+
+                <!-- HIGH SCORES -->
+                <div id="highscore-section" style="display: none;">
+                    <h2>High Scores</h2>
+                    <div id="highscore-list"></div>
+                    <p>
+                        <button type="submit" class="btn" id="goback-btn">Go Back</button>
+                        <button type="submit" class="btn" id="clear-btn">Clear High Scores</button>
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="test.js"></script>
+</body>
+</html>
