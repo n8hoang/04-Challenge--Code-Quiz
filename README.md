@@ -17,6 +17,7 @@ Click start quiz to start the quiz. You have 60 seconds for the quiz every quest
 ## Credits
 
 Coded by github.com/n8hoang
+Quiz questions sourced from: https://www.interviewbit.com/javascript-mcq/, https://www.tutorialspoint.com/javascript/javascript_online_quiz.htm, https://www.javatpoint.com/javascript-mcq
 
 ## License
 
