@@ -11,7 +11,7 @@ No need to install just run in browser. Link to deployed APP : https://n8hoang.g
 ## Usage
 
 Click start quiz to start the quiz. You have 60 seconds for the quiz every question you get wrong 5 seconds is deducted from the timer. You can save your high scores and view them at any time.
-![portfolio demo](Assets/passwordgenss.png)
+![portfolio demo](Assets/images/codequizss.png)
 
 
 ## Credits
