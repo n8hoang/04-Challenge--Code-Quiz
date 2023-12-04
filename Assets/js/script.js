@@ -24,9 +24,6 @@ const clear = document.getElementById("clear-btn");
 const viewHighscore = document.getElementById("view-highscores");
 const highscoreList = document.getElementById("highscore-list");
 
-/**
- * QUESTIONS ARRAY
- */
 const questions = [
     {
         question: "Which of the following keywords is used to define a variable in Javascript?",
@@ -79,14 +76,11 @@ const questions = [
         answer: "D. default"
     }
 ];
-
-/**
- * VARIABLES
- */
-let questionIndex = 0;
+// Other global variables and functions remain the same
+let questionIndex;
 let correctAnswer = 0;
 let questionNum = 0;
-let timeTotal = 61;
+let timeTotal;
 
 /**
  * MAIN GAME FUNCTIONS
@@ -100,7 +94,11 @@ function startQuiz() {
     questionAnswers.style.display = "block";
     timer.style.display = "block";
     timesUp.style.display = "none";
+    startTimer();
+    nextQuestion();
+};
 
+function startTimer() {
     var startTimer = setInterval(function() {
         timeTotal--;
         timeLeft.textContent = timeTotal;
@@ -111,12 +109,7 @@ function startQuiz() {
             }
         }
     },1000);
-    showQuestions();
-};
-
-function showQuestions() {
-    nextQuestion();
-};
+}
 
 function nextQuestion() {
     questionTitle.textContent = questions[questionIndex].question;
@@ -126,13 +119,20 @@ function nextQuestion() {
     choiceD.textContent = questions[questionIndex].choices[3];
 };
 
-function checkAnswer(answer) {
+
+function handleChoiceClick(event) {
+    if (event.target.nodeName === "BUTTON") {
+        checkAnswer(event.target.dataset.choiceIndex);
+    }
+}
+
+function checkAnswer(choiceIndex) {
 
     var lineBreak = document.getElementById("lineBreak");
     lineBreak.style.display = "block";
     checkAns.style.display = "block";
 
-    if (questions[questionIndex].answer === questions[questionIndex].choices[answer]) {
+    if (questions[questionIndex].answer === questions[questionIndex].choices[choiceIndex]) {
         correctAnswer++;
         checkAns.textContent = "Correct!";
     } else {
@@ -161,9 +161,7 @@ function gameOver() {
     finalScore.textContent = correctAnswer;
 }
 
-/**
- * HIGH SCORE FUNCTIONS
- */
+//High Score
 function storeHighscores(event) {
     event.preventDefault();
 
@@ -198,7 +196,6 @@ function storeHighscores(event) {
     showHighscores();
 }
 
-var i = 0;
 function showHighscores() {
 
     start.style.display = "none";
@@ -208,7 +205,7 @@ function showHighscores() {
     scoreSummary.style.display = "none";
     highscoreSection.style.display = "block";
 
-    var savedHighscores = localStorage.getItem("high scores");
+    var savedHighscores = localStorage.getItem("high-scores");
 
     if (savedHighscores === null) {
         return;
@@ -216,7 +213,7 @@ function showHighscores() {
 
     var storedHighscores = JSON.parse(savedHighscores);
 
-    for (; i < storedHighscores.length; i++) {
+    for (let i = 0; i < storedHighscores.length; i++) {
         var eachNewHighscore = document.createElement("p");
         eachNewHighscore.innerHTML = storedHighscores[i].initials + ": " + storedHighscores[i].score;
         highscoreList.appendChild(eachNewHighscore);
@@ -224,7 +221,7 @@ function showHighscores() {
 }
 
 function clearHighscores() {
-    window.localStorage.removeItem("high scores");
+    window.localStorage.removeItem("high-scores");
     highscoreList.innerHTML = "High Scores Cleared!";
     highscoreList.style.color = "red";
 }
@@ -233,34 +230,17 @@ function goBackFunction () {
     start.style.display = "block";
     highscoreSection.style.display = "none";
 }
-/**
- * CHOICE HANDLERS
- */
-function chooseA() { checkAnswer(0); }
 
-function chooseB() { checkAnswer(1); }
-
-function chooseC() { checkAnswer(2); }
-
-function chooseD() { checkAnswer(3); }
+document.getElementById("start-btn").addEventListener("click", startQuiz);
+document.getElementById("choice-container").addEventListener("click", handleChoiceClick);
+document.getElementById("submit-initial").addEventListener("click", storeHighscores);
+document.getElementById("view-highscores").addEventListener("click", showHighscores);
+document.getElementById("goback-btn").addEventListener("click", goBackFunction);
+document.getElementById("clear-btn").addEventListener("click", clearHighscores);
 
 /**
- * EVENT LISTENERS
+ * INITIALIZATION
  */
-startBtn.addEventListener("click", startQuiz);
-choiceA.addEventListener("click", chooseA);
-choiceB.addEventListener("click", chooseB);
-choiceC.addEventListener("click", chooseC);
-choiceD.addEventListener("click", chooseD);
-submitHighscore.addEventListener("click", function(event) { storeHighscores(event); });
-viewHighscore.addEventListener("click", function(event) { showHighscores(event); });
-goBack.addEventListener("click", goBackFunction);
-clear.addEventListener("click", clearHighscores);
-
-/**
- * Initial functions the page runs
- */
-
 function init() {
     timesUp.style.display = "none";
     timer.style.display = "none";
